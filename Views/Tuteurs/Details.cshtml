@@ -1,0 +1,83 @@
+﻿@model IsiGestionElementaire.Models.Tuteur
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tuteur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CNI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomTuteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomTuteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrenomTuteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrenomTuteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdresseTuteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdresseTuteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelTuteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelTuteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailTuteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailTuteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CiviliteTuteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CiviliteTuteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

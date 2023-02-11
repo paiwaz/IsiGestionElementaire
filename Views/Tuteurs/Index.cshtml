@@ -1,0 +1,131 @@
+﻿@model PagedList.IPagedList <IsiGestionElementaire.Models.Tuteur>
+@using PagedList.Mvc;
+@using IsiGestionElementaire.Helpers
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function toggle() {
+        var ele = document.getElementById("Recherche");
+        var text = document.getElementById("displayText");
+        if (ele.style.display == "block") {
+            ele.style.display = "none";
+            text.innerHTML = "Afficher la recherche";
+        }
+        else {
+            ele.style.display = "block";
+            text.innerHTML = "Masquer la recherche";
+        }
+    }
+</script>
+
+<h2>Index</h2>
+
+<b>@*<img src="@Url.Content("~/Images/icon_textbox_search.gif")" />*@<i class="glyphicon glyphicon-search"></i><a id="displayText" href="javascript:toggle();">Afficher la recherche</a></b>
+<div id="Recherche" style="display: none">
+    @using (Html.BeginForm("Index", "Tuteurs", FormMethod.Post, new { id = "searchForm" }))
+    { 
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+        <input id="NumCNI" name="NumCNI" class="searchBox1" type="text" onblur="if(this.value=='')this.value='par Numèro CNI';" onclick="if (this.value == 'par Numèro CNI') this.value = '';" value="@ViewBag.NumCNI" />
+        <br />
+        <input type="submit" name="Rechercher" id="Rechercher" value="Rechercher" />
+    } 
+</div>
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+        <a href="@Url.Action("Create")">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span class="sr-only">Nouveau</span>
+        </a>
+    </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CNI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NomTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().PrenomTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().AdresseTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TelTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().EmailTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CiviliteTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Parente)
+            </th>
+            <th>
+                <div class="pull-right">
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Ajouter Tuteur", "Create", "Tuteurs", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+                </div>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrenomTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdresseTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CiviliteTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parente)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.id, @class= "glyphicon glyphicon-pencil" }) |
+                    <a href="@Url.Action("Edit", new { id = item.id })">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only">Edit</span>
+                    </a>*@
+                    @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                    @*@Html.ActionLink("Delete", "Delete", new { id=item.id })
+                    <a href="@Url.Action("Delete", new { id = item.id })">
+                        <i class="glyphicon glyphicon-remove"></i>
+                        <span class="sr-only">Delete</span>
+                    </a>*@
+                    <div class="pull-right">
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Tuteurs", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                        &nbsp;
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-search'></span>", "Details", "Details", "Tuteurs", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                        &nbsp;
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Tuteurs", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+   

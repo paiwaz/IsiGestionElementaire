@@ -1,0 +1,120 @@
+﻿@model IEnumerable<IsiGestionElementaire.Models.Tuteur>
+
+@{
+    ViewBag.Title = "AddTuteur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddTuteur</h2>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Eléve", "Edit", new { id = ViewBag.id })</li>
+    <li class="active">Tuteur</li>
+    <li>@Html.ActionLink("Service", "addService", new { id = ViewBag.id })</li>
+    <li>@Html.ActionLink("Classe", "AddClasse", new { id = ViewBag.id })</li>
+</ol>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CNI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrenomTuteur)
+        </th>        
+        <th></th>
+    </tr>
+
+    @foreach (var item in (List<IsiGestionElementaire.Models.VParentEleve>)ViewBag.parent)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomTuteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomTuteur)
+            </td>            
+            <td>
+                @Html.ActionLink("Retirer", "Retirer", new { id = item.IdTuteur, idEleve = item.IdEleve })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr /><hr />
+
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CNI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrenomTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresseTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CiviliteTuteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parente)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrenomTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdresseTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CiviliteTuteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Parente)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }) ]
+                    @Html.ActionLink("Affecter", "Affecter", new { id = item.id, idEleve = ViewBag.id })
+                </td>
+            </tr>
+        }
+
+    </table>

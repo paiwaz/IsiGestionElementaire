@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BdElementaireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BdElementaire.dbo.VEleveTuteurRPT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VEleveTuteurRPT">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Matricule" />
+            <PropertyRef Name="Nom" />
+            <PropertyRef Name="Prenom" />
+            <PropertyRef Name="Sexe" />
+            <PropertyRef Name="DateNaiss" />
+            <PropertyRef Name="LieuNaiss" />
+            <PropertyRef Name="NomTuteur" />
+            <PropertyRef Name="PrenomTuteur" />
+            <PropertyRef Name="AdresseTuteur" />
+            <PropertyRef Name="TelTuteur" />
+            <PropertyRef Name="CNI" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Matricule" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sexe" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="DateNaiss" Type="datetime" Nullable="false" />
+          <Property Name="LieuNaiss" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="NomTuteur" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="PrenomTuteur" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="AdresseTuteur" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TelTuteur" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CNI" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BdElementaire.dbo.VParentEleve' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VParentEleve">
+          <Key>
+            <PropertyRef Name="IdEleve" />
+            <PropertyRef Name="IdTuteur" />
+            <PropertyRef Name="Matricule" />
+            <PropertyRef Name="Nom" />
+            <PropertyRef Name="Prenom" />
+            <PropertyRef Name="NomTuteur" />
+            <PropertyRef Name="PrenomTuteur" />
+            
+          </Key>
+          <Property Name="IdEleve" Type="int" Nullable="false" />
+          <Property Name="IdTuteur" Type="int" Nullable="false" />
+          <Property Name="Matricule" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomTuteur" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="PrenomTuteur" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="CNI" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BdElementaire.dbo.VTuteur' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VTuteur">
+          <Key>
+            <PropertyRef Name="IdEleve" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="NomTuteur" />
+            <PropertyRef Name="PrenomTuteur" />
+            <PropertyRef Name="AdresseTuteur" />
+            <PropertyRef Name="TelTuteur" />
+            <PropertyRef Name="CiviliteTuteur" />
+            <PropertyRef Name="Parente" />
+            <PropertyRef Name="CNI" />
+          </Key>
+          <Property Name="IdEleve" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="NomTuteur" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="PrenomTuteur" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="AdresseTuteur" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TelTuteur" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmailTuteur" Type="nvarchar" MaxLength="80" />
+          <Property Name="CiviliteTuteur" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Parente" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CNI" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BdElementaireModelStoreContainer">
+          <EntitySet Name="VEleveTuteurRPT" EntityType="Self.VEleveTuteurRPT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VEleveTuteurRPT].[Id] AS [Id], 
+    [VEleveTuteurRPT].[Matricule] AS [Matricule], 
+    [VEleveTuteurRPT].[Nom] AS [Nom], 
+    [VEleveTuteurRPT].[Prenom] AS [Prenom], 
+    [VEleveTuteurRPT].[Sexe] AS [Sexe], 
+    [VEleveTuteurRPT].[DateNaiss] AS [DateNaiss], 
+    [VEleveTuteurRPT].[LieuNaiss] AS [LieuNaiss], 
+    [VEleveTuteurRPT].[NomTuteur] AS [NomTuteur], 
+    [VEleveTuteurRPT].[PrenomTuteur] AS [PrenomTuteur], 
+    [VEleveTuteurRPT].[AdresseTuteur] AS [AdresseTuteur], 
+    [VEleveTuteurRPT].[TelTuteur] AS [TelTuteur], 
+    [VEleveTuteurRPT].[CNI] AS [CNI]
+    FROM [dbo].[VEleveTuteurRPT] AS [VEleveTuteurRPT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VParentEleve" EntityType="Self.VParentEleve" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VParentEleve].[IdEleve] AS [IdEleve], 
+    [VParentEleve].[IdTuteur] AS [IdTuteur], 
+    [VParentEleve].[Matricule] AS [Matricule], 
+    [VParentEleve].[Nom] AS [Nom], 
+    [VParentEleve].[Prenom] AS [Prenom], 
+    [VParentEleve].[NomTuteur] AS [NomTuteur], 
+    [VParentEleve].[PrenomTuteur] AS [PrenomTuteur], 
+    [VParentEleve].[CNI] AS [CNI]
+    FROM [dbo].[VParentEleve] AS [VParentEleve]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VTuteur" EntityType="Self.VTuteur" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VTuteur].[IdEleve] AS [IdEleve], 
+    [VTuteur].[id] AS [id], 
+    [VTuteur].[NomTuteur] AS [NomTuteur], 
+    [VTuteur].[PrenomTuteur] AS [PrenomTuteur], 
+    [VTuteur].[AdresseTuteur] AS [AdresseTuteur], 
+    [VTuteur].[TelTuteur] AS [TelTuteur], 
+    [VTuteur].[EmailTuteur] AS [EmailTuteur], 
+    [VTuteur].[CiviliteTuteur] AS [CiviliteTuteur], 
+    [VTuteur].[Parente] AS [Parente], 
+    [VTuteur].[CNI] AS [CNI]
+    FROM [dbo].[VTuteur] AS [VTuteur]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BdElementaireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="VParentEleve">
+          <Key>
+            <PropertyRef Name="IdEleve" />
+            <PropertyRef Name="IdTuteur" />
+            <PropertyRef Name="Matricule" />
+            <PropertyRef Name="Nom" />
+            <PropertyRef Name="Prenom" />
+            <PropertyRef Name="NomTuteur" />
+            <PropertyRef Name="PrenomTuteur" />
+          </Key>
+          <Property Name="IdEleve" Type="Int32" Nullable="false" />
+          <Property Name="IdTuteur" Type="Int32" Nullable="false" />
+          <Property Name="Matricule" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomTuteur" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrenomTuteur" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CNI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BdElementaireEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VParentEleve" EntityType="Self.VParentEleve" />
+          <EntitySet Name="VEleveTuteurRPT" EntityType="BdElementaireModel.VEleveTuteurRPT" />
+          <EntitySet Name="VTuteur" EntityType="BdElementaireModel.VTuteur" />
+        </EntityContainer>
+        <EntityType Name="VEleveTuteurRPT">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Matricule" />
+            <PropertyRef Name="Nom" />
+            <PropertyRef Name="Prenom" />
+            <PropertyRef Name="Sexe" />
+            <PropertyRef Name="DateNaiss" />
+            <PropertyRef Name="LieuNaiss" />
+            <PropertyRef Name="NomTuteur" />
+            <PropertyRef Name="PrenomTuteur" />
+            <PropertyRef Name="AdresseTuteur" />
+            <PropertyRef Name="TelTuteur" />
+            <PropertyRef Name="CNI" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Matricule" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sexe" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DateNaiss" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LieuNaiss" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="NomTuteur" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="PrenomTuteur" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="AdresseTuteur" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TelTuteur" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VTuteur">
+          <Key>
+            <PropertyRef Name="IdEleve" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="NomTuteur" />
+            <PropertyRef Name="PrenomTuteur" />
+            <PropertyRef Name="AdresseTuteur" />
+            <PropertyRef Name="TelTuteur" />
+            <PropertyRef Name="CiviliteTuteur" />
+            <PropertyRef Name="Parente" />
+            <PropertyRef Name="CNI" />
+          </Key>
+          <Property Name="IdEleve" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="NomTuteur" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="PrenomTuteur" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="AdresseTuteur" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TelTuteur" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EmailTuteur" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CiviliteTuteur" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Parente" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BdElementaireModelStoreContainer" CdmEntityContainer="BdElementaireEntities">
+          <EntitySetMapping Name="VParentEleve">
+            <EntityTypeMapping TypeName="BdElementaireModel.VParentEleve">
+              <MappingFragment StoreEntitySet="VParentEleve">
+                <ScalarProperty Name="IdEleve" ColumnName="IdEleve" />
+                <ScalarProperty Name="IdTuteur" ColumnName="IdTuteur" />
+                <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="NomTuteur" ColumnName="NomTuteur" />
+                <ScalarProperty Name="PrenomTuteur" ColumnName="PrenomTuteur" />
+                <ScalarProperty Name="CNI" ColumnName="CNI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEleveTuteurRPT">
+            <EntityTypeMapping TypeName="BdElementaireModel.VEleveTuteurRPT">
+              <MappingFragment StoreEntitySet="VEleveTuteurRPT">
+                <ScalarProperty Name="CNI" ColumnName="CNI" />
+                <ScalarProperty Name="TelTuteur" ColumnName="TelTuteur" />
+                <ScalarProperty Name="AdresseTuteur" ColumnName="AdresseTuteur" />
+                <ScalarProperty Name="PrenomTuteur" ColumnName="PrenomTuteur" />
+                <ScalarProperty Name="NomTuteur" ColumnName="NomTuteur" />
+                <ScalarProperty Name="LieuNaiss" ColumnName="LieuNaiss" />
+                <ScalarProperty Name="DateNaiss" ColumnName="DateNaiss" />
+                <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VTuteur">
+            <EntityTypeMapping TypeName="BdElementaireModel.VTuteur">
+              <MappingFragment StoreEntitySet="VTuteur">
+                <ScalarProperty Name="CNI" ColumnName="CNI" />
+                <ScalarProperty Name="Parente" ColumnName="Parente" />
+                <ScalarProperty Name="CiviliteTuteur" ColumnName="CiviliteTuteur" />
+                <ScalarProperty Name="EmailTuteur" ColumnName="EmailTuteur" />
+                <ScalarProperty Name="TelTuteur" ColumnName="TelTuteur" />
+                <ScalarProperty Name="AdresseTuteur" ColumnName="AdresseTuteur" />
+                <ScalarProperty Name="PrenomTuteur" ColumnName="PrenomTuteur" />
+                <ScalarProperty Name="NomTuteur" ColumnName="NomTuteur" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IdEleve" ColumnName="IdEleve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

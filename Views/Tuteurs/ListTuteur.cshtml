@@ -1,0 +1,116 @@
+﻿@using IsiGestionElementaire.Helpers
+@model IEnumerable<IsiGestionElementaire.Models.Tuteur>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CNI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrenomTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CiviliteTuteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parente)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomTuteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrenomTuteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdresseTuteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelTuteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailTuteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CiviliteTuteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parente)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+            <div class="pull-right">
+                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Attribuer", "AddTuteurToEleve", "Tuteurs", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                &nbsp;
+                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Tuteurs", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
+<script type="text/javascript">
+
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        $("a[data-modal]").on("click", function (e) {
+            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    /*backdrop: 'static',*/
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>
